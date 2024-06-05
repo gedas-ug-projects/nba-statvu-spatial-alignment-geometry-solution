@@ -1,3 +1,4 @@
+# Docs
 1. **Activate** `conda` virtual environment `MixSort2`
 2. **Run MixSort**
     - **Terminal Location:** `/playpen-storage/shanw25/src/MixSort`
