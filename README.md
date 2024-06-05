@@ -1,59 +1,66 @@
-0, Activate conda virtual environment MixSort2
+1. **Activate** `conda` virtual environment `MixSort2`
+2. **Run MixSort**
+    - **Terminal Location:** `/playpen-storage/shanw25/src/MixSort`
+    
+    ```bash
+    command: python3 tools/demo_track.py -expn {experiment_name} -f exps/example/mot/yolox_x_sportsmot.py -c pretrained/yolox_x_sports_mix.pth.tar -n MixFormer_sports_mix.pth.tar --path {path_to_video} --save_result video
+    ```
+    **Example:**
+    ```bash
+    python3 tools/demo_track.py -expn statvu -f exps/example/mot/yolox_x_sportsmot.py -c pretrained/yolox_x_sports_mix.pth.tar -n MixFormer_sports_mix.pth.tar --path ./datasets/statvu/a.mp4 --save_result video
+    ```
 
-1, Run MixSort.
-terminal location: /playpen-storage/shanw25/src/MixSort
+3. **Copy** `/playpen-storage/shanw25/src/MixSort/YOLOX_outputs/{experiment_name}/{current_time}.txt` **TO** `/playpen-storage/shanw25/src/KaliCalib/MixSort_Combine/data`
+4. **Change the variable value in main()** to match the name of the file copied in step 3. Run `/playpen-storage/shanw25/src/KaliCalib/MixSort_Combine/src/MixSort-output-parser.py`.
 
-command: python3 tools/demo_track.py -expn {experiment_name} -f exps/example/mot/yolox_x_sportsmot.py -c pretrained/yolox_x_sports_mix.pth.tar -n MixFormer_sports_mix.pth.tar --path {path_to_video} --save_result video
+    - **Terminal Location:** `/playpen-storage/shanw25/src/KaliCalib/MixSort_Combine/src/`
+    ```bash
+    command: python3 ./MixSort-output-parser.py
+    ```
 
-command e.g.
-python3 tools/demo_track.py -expn statvu -f exps/example/mot/yolox_x_sportsmot.py -c pretrained/yolox_x_sports_mix.pth.tar -n MixFormer_sports_mix.pth.tar --path ./datasets/statvu/a.mp4 --save_result video
+5. **Run** `sample_frames.py`
+    - **Terminal Location:** `/playpen-storage/shanw25/data/myles`
+    
+    ```bash
+    command: python3 sample_frames.py {path_to_video} 1
+    ```
+    **Example:**
+    ```bash
+    python3 sample_frames.py /playpen-storage/shanw25/src/MixSort/datasets/statvu/a.mp4 1
+    ```
 
-2, Copy /playpen-storage/shanw25/src/MixSort/YOLOX_outputs/{experiment_name}/{current_time}.txt TO /playpen-storage/shanw25/src/KaliCalib/MixSort_Combine/data
+6. **Change the variables in main()**. Run `/playpen-storage/shanw25/data/myles/image_size.py`
+7. **Activate** `conda` virtual environment `KaliCalib`
+    ```bash
+    conda activate KaliCalib
+    ```
 
-3, Change the variable value in main() to match the name of the file copied in step 2. Run /playpen-storage/shanw25/src/KaliCalib/MixSort_Combine/src/MixSort-output-parser.py. 
+8. **Move all images** outputted in step 6 to `/playpen-storage/shanw25/src/KaliCalib/CHALLENGE/`
+9. **Run** `/playpen-storage/shanw25/src/KaliCalib/CHALLENGE`
+    - **Terminal Location:** `/playpen-storage/shanw25/src/KaliCalib`
+    ```bash
+    command: ./eval_challenge.sh
+    ```
 
-terminal location: /playpen-storage/shanw25/src/KaliCalib/MixSort_Combine/src/
+10. **Run** `get_real_position.py`
+    - **Terminal Location:** `/playpen-storage/shanw25/src/KaliCalib/MixSort_Combine/src`
+    ```bash
+    command: python3 get_real_position.py
+    ```
 
-command: python3 ./MixSort-output-parser.py
+11. **Change variable path** in `interpolate.py`. **Run** `interpolate.py`
+    - **Terminal Location:** `/playpen-storage/shanw25/src/KaliCalib/MixSort_Combine/src`
+    ```bash
+    command: python3 interpolate.py
+    ```
 
-4, Run sample_frames.py
+12. **Run** `visualization.py`
+    - **Terminal Location:** `/playpen-storage/shanw25/src/KaliCalib/MixSort_Combine/src`
+    ```bash
+    command: python3 visualization.py
+    ```
 
-terminal location: /playpen-storage/shanw25/data/myles
-
-command: python3 sample_frames.py {path_to_video} 1
-
-command e.g.
-python3 sample_frames.py /playpen-storage/shanw25/src/MixSort/datasets/statvu/a.mp4 1
-
-5, Change the variables in main(). Run /playpen-storage/shanw25/data/myles/image_size.py
-
-6, conda activate KaliCalib
-
-7, Move all images outputed in step 5 under /playpen-storage/shanw25/src/KaliCalib/CHALLENGE/
-
-8, Run /playpen-storage/shanw25/src/KaliCalib/CHALLENGE
-
-terminal location: /playpen-storage/shanw25/src/KaliCalib
-
-command: ./eval_challenge.sh
-
-9, Run get_real_position.py
-
-terminal location: /playpen-storage/shanw25/src/KaliCalib/MixSort_Combine/src
-
-command: python3 get_real_position.py
-
-10, Change variable path in interpolate.py. Run interpolate.py
-
-terminal location: /playpen-storage/shanw25/src/KaliCalib/MixSort_Combine/src
-
-command: python3 interpolate.py
-
-11, Run visualization.py
-
-terminal location: /playpen-storage/shanw25/src/KaliCalib/MixSort_Combine/src
-
-command: python3 visualization.py
-
-12, 
-scp shanw25@oprime.cs.unc.edu:/playpen-storage/shanw25/src/KaliCalib/MixSort_Combine/outputs/output_video.avi /Users/shanw25/Desktop/
+13. **Copy** the output video:
+    ```bash
+    scp shanw25@oprime.cs.unc.edu:/playpen-storage/shanw25/src/KaliCalib/MixSort_Combine/outputs/output_video.avi /Users/shanw25/Desktop/
+    ```
